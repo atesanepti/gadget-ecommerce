@@ -1,0 +1,26 @@
+#navigation-container {
+  @apply w-[3%] hover:w-[18%]  
+    h-screen fixed top-0 left-0 
+    flex flex-col justify-between
+    bg-stone-950 
+    py-6 transition-all;
+}
+.nav-link {
+  @apply flex items-center gap-2 
+    transition-transform hover:translate-x-2
+    py-3;
+}
+.nav-link .nav-link-icon {
+  @apply text-white text-base lg:text-xl
+    ml-2;
+}
+.nav-link-name {
+  @apply text-white 
+    opacity-0  text-sm 
+    hidden transition-opacity;
+}
+
+#navigation-container:hover .nav-link-name {
+  @apply block
+  opacity-100;
+}
