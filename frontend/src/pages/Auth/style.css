@@ -1,26 +1,114 @@
-#navigation-container {
-  @apply w-[3%] hover:w-[18%]  
-    h-screen fixed top-0 left-0 
-    flex flex-col justify-between
-    bg-stone-950 
-    py-6 transition-all;
-}
-.nav-link {
-  @apply flex items-center gap-2 
-    transition-transform hover:translate-x-2
-    py-3;
-}
-.nav-link .nav-link-icon {
-  @apply text-white text-base lg:text-xl
-    ml-2;
-}
-.nav-link-name {
-  @apply text-white 
-    opacity-0  text-sm 
-    hidden transition-opacity;
+/* navigation menu  */
+.navigation-container {
+  @apply sticky top-0 left-0 bg-black z-50
+  px-2 w-full h-[80px] 
+  flex justify-between items-center
+  md:flex-col  md:py-5 
+  md:fixed md:w-max md:h-screen 
+  text-white;
 }
 
-#navigation-container:hover .nav-link-name {
+.menu-icon {
+  @apply text-white text-3xl cursor-pointer;
+}
+.navigate-menu {
+  @apply flex  md:flex-col gap-3 md:gap-5 lg:gap-7;
+}
+.nav-link {
+  @apply flex flex-col 
+  items-center gap-2 px-2;
+}
+.animation-pop {
+  animation: pop 100ms ease-in;
+}
+@keyframes pop {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+.nav-link .nav-link-icon {
+  @apply text-2xl hidden md:block;
+}
+.nav-link .nav-link-name {
+  @apply text-sm;
+}
+.profile-menu {
+  @apply  md:relative;
+}
+.drop-down-menu {
+  @apply absolute top-[-90px] left-0
+  w-[120px] 
+  rounded-md
+  overflow-hidden
+ bg-[#151515]
+ 
+ ;
+}
+
+.drop-down-menu li .link,
+.drop-down-menu li button {
+  @apply w-full block px-3 py-2    text-sm
+  hover:!bg-[#353434]   cursor-pointer !text-center;
+}
+
+/* Login  */
+.form-container {
+  @apply mt-[5rem]
+    ml-[5rem]
+  ;
+}
+
+.form-title h2 {
+  @apply text-white
+  text-xl md:text-2xl font-medium ;
+}
+
+
+.form .form-input {
+  @apply my-3 md:my-5;
+}
+.form-container.signup .form-input {
+  @apply my-3;
+}
+.form-input label {
+  @apply block text-white
+  text-base font-normal;
+}
+.form-input input {
+  @apply w-full 
+  px-2 py-1 border border-[#6f737a]
+  focus:outline-none
+  transition-colors
+  focus:border-white
+  text-white
+  rounded-sm
+  bg-[#45474B];
+}
+.form button {
   @apply block
-  opacity-100;
+  border-none 
+  bg-pink-500
+  text-white cursor-pointer
+  px-3 py-1 rounded-md
+  border border-pink-600
+  text-sm;
+}
+
+.form-container .option {
+  @apply text-white
+  block
+  mt-7
+  text-sm;
+}
+
+.leader {
+  @apply animate-spin rounded-full
+  h-16 w-16 border-t-4 border-pink-500 border-opacity-50;
+}
+
+.menu-active {
+  @apply border-l-[3] border-l-green-600;
 }

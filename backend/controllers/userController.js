@@ -35,6 +35,7 @@ const createUser = asyncHandler(async (req, res, next) => {
 
     return res.status(201).json({
       userId: user._id,
+      isAdmin: user.isAdmin,
       username: user.username,
       email: user.email,
       token,
@@ -63,6 +64,7 @@ const loginUser = asyncHandler(async (req, res, next) => {
       const token = createToken(res, user._id);
       res.status(200).json({
         userId: user._id,
+        isAdmin: user.isAdmin,
         username: user.username,
         email: user.email,
         token,
@@ -86,7 +88,7 @@ const logout = asyncHandler(async (req, res, next) => {
 });
 
 const getUsers = asyncHandler(async (req, res, next) => {
-  const allUsers = await User.find({ isAdmin: false }, { password: 0 }).lean();
+  const allUsers = await User.find({}, { password: 0 }).lean();
   return res.status(200).json(allUsers);
 });
 
@@ -140,7 +142,6 @@ const deleteUserByAdmin = asyncHandler(async (req, res, next) => {
   }
 });
 
-
 const getUserByAdmin = asyncHandler(async (req, res, next) => {
   const user = await User.findById(req.params.id).select("-password");
 
@@ -155,14 +156,12 @@ const getUserByAdmin = asyncHandler(async (req, res, next) => {
   }
 });
 
-
-const updateUserByAdmin = asyncHandler(async (req,res,next)=>{
+const updateUserByAdmin = asyncHandler(async (req, res, next) => {
   const user = await User.findById(req.params.id);
 
-  if(user){
+  if (user) {
     user.username = req.body.username || user.username;
     user.email = req.body.email || user.email;
-    user.isAdmin = Boolean(req.body.isAdmin)
 
     const updatedUser = await user.save();
 
@@ -170,15 +169,12 @@ const updateUserByAdmin = asyncHandler(async (req,res,next)=>{
       userId: updatedUser._id,
       username: updatedUser.username,
       email: updatedUser.email,
+      isAdmin: updatedUser.isAdmin,
     });
-
+  } else {
+    return res.status(404).json({ message: "user is not found" });
   }
-  else{
-     return res.status(404).json({ message: "user is not found" });
-  
-  }
-
-})
+});
 
 export {
   createUser,

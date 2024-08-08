@@ -1,0 +1,45 @@
+.profile-container {
+  @apply flex justify-center items-center w-full h-screen;
+}
+.profile-container form {
+  @apply w-full;
+}
+
+.profile-container form .form-input {
+  @apply my-4;
+}
+.profile-container form .form-input input {
+  @apply text-slate-300;
+}
+.profile-container form label {
+  @apply text-white text-sm lg:text-base;
+}
+.profile-action {
+  @apply flex justify-between items-center;
+}
+.profile-action button,
+.profile-action .link {
+  @apply bg-pink-600 text-white
+    rounded-md cursor-pointer
+    px-4 py-1 text-sm lg:text-base;
+}
+
+.userlist-container {
+  @apply w-4/5 mx-auto h-screen;
+}
+.userlist-container table,
+tr,
+th,
+td {
+  @apply text-start py-2;
+}
+.userlist-container table tr:hover {
+  @apply bg-[#151515];
+}
+.tabel-admin-col {
+  @apply flex items-center gap-3;
+}
+.userlist-container table,
+tr span {
+  @apply text-sm;
+}
