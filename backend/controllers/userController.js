@@ -62,7 +62,7 @@ const loginUser = asyncHandler(async (req, res, next) => {
     if (isPasswordCorrect) {
       //create jwt token and set in client cookie
       const token = createToken(res, user._id);
-      res.status(200).json({
+      return res.status(200).json({
         userId: user._id,
         isAdmin: user.isAdmin,
         username: user.username,
@@ -70,10 +70,10 @@ const loginUser = asyncHandler(async (req, res, next) => {
         token,
       });
     } else {
-      res.status(401).json({ message: "authentication failed!" });
+      return res.status(401).json({ message: "authentication failed!" });
     }
   } else {
-    res.status(401).json({ message: "authentication failed!" });
+    return res.status(401).json({ message: "authentication failed!" });
   }
 });
 

@@ -4,7 +4,7 @@ import asyncHandler from "./asyncHandler.js";
 
 const authenticate = asyncHandler(async (req, res, next) => {
   const token = req.cookies.accessKey;
-
+  console.log("token = ",token)
   if (token) {
     try {
       const decoded = jwt.verify(token, process.env.JWT_KEY);
