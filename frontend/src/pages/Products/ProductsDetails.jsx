@@ -54,10 +54,12 @@ const ProductsDetails = () => {
     setDescription(!description);
   };
 
+
+
   return (
     <>
       {!product && error ? (
-        <Navigate to="/error" />
+        <Navigate to="/login" />
       ) : (
         <div className="w-full md:w-[90%] mx-auto py-12">
           <Link to="/" className="text-white font-medium text-base block mb-7">

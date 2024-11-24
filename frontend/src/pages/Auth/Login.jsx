@@ -60,10 +60,17 @@ const Login = () => {
 
   useEffect(() => {
     if (userInfo) {
-      console.log("okk..");
       navigate(redirect);
     }
   }, [userInfo, navigate, redirect]);
+
+  const handleDemoLogin = (type) => {
+    if (type == "admin") {
+      setFormValue({ email: "epti060@gmail.com", password: "Epti1234" });
+    } else {
+      setFormValue({ email: "demoofaliba@gmail.com", password: "Aliba1234" });
+    }
+  };
 
   return (
     <div className="form-container w-[320px] md:w-[450px] mx-auto">
@@ -91,6 +98,20 @@ const Login = () => {
             value={formValue.password}
             onChange={handlerChange}
           />
+        </div>
+        <div className="flex items-center gap-2 my-3 ">
+          <button
+            onClick={() => handleDemoLogin("admin")}
+            className="!bg-white font-medium font-xs !text-black"
+          >
+            Demo Login as Admin
+          </button>
+          <button
+            onClick={() => handleDemoLogin("user")}
+            className="!bg-white font-medium font-xs !text-black"
+          >
+            Demo Login as User
+          </button>
         </div>
         <Button isLoading={isLoading}>Login</Button>
       </form>

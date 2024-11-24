@@ -270,3 +270,4 @@ export const getCategoryRelatedProducts = asyncHandler(async (req, res) => {
   console.log("products", products);
   return res.status(200).json(products);
 });
+

@@ -6,6 +6,7 @@ const orderApiSlice = apiSlice.injectEndpoints({
     fetchAllOrders: builder.query({
       query: () => ({
         url: `${ORDER_URL}`,
+        credentials : "include",
       }),
     }),
     createOrder: builder.mutation({
@@ -13,37 +14,44 @@ const orderApiSlice = apiSlice.injectEndpoints({
         url: `${ORDER_URL}`,
         method: "POST",
         body: data,
+        credentials : "include",
       }),
     }),
     fetchOwnOrder: builder.query({
       query: () => ({
         url: `${ORDER_URL}/mime`,
+        credentials : "include",
       }),
       keepUnusedDataFor: 5,
     }),
     fetchOrderById: builder.query({
       query: (id) => ({
         url: `${ORDER_URL}/${id}`,
+        credentials : "include",
       }),
     }),
     fetchTotalOrders: builder.query({
       query: () => ({
         url: `${ORDER_URL}/total-orders`,
+        credentials : "include",
       }),
     }),
     fetchTotalSalesData: builder.query({
       query: () => ({
         url: `${ORDER_URL}/total-sales`,
+        credentials : "include",
       }),
     }),
     fetchTotalSalesByDateData: builder.query({
       query: () => ({
         url: `${ORDER_URL}/total-sales-by-date`,
+        credentials : "include",
       }),
     }),
     updatePayment: builder.mutation({
       query: ({ id, data }) => ({
         url: `${ORDER_URL}/${id}/pay`,
+        credentials : "include",
         method: "PUT",
         body: data,
       }),
@@ -51,6 +59,7 @@ const orderApiSlice = apiSlice.injectEndpoints({
     updateDelivery: builder.mutation({
       query: (id) => ({
         url: `${ORDER_URL}/${id}/delivered`,
+        credentials : "include",
         method: "PUT",
         body: {},
       }),
@@ -58,6 +67,7 @@ const orderApiSlice = apiSlice.injectEndpoints({
     fetchOrderClientId: builder.query({
       query: () => ({
         url: "api/config/paypal",
+        credentials : "include",
       }),
     }),
   }),

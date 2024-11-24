@@ -9,6 +9,7 @@ export const categoryApiSlice = apiSlice.injectEndpoints({
         url: `${CATEGORY_URL}/`,
         method: "POST",
         body: newCategory,
+        credentials: "include",
       }),
     }),
 
@@ -16,6 +17,7 @@ export const categoryApiSlice = apiSlice.injectEndpoints({
       query: (categoryId) => ({
         url: `${CATEGORY_URL}/${categoryId}`,
         method: "DELETE",
+        credentials: "include",
       }),
     }),
 
@@ -24,12 +26,14 @@ export const categoryApiSlice = apiSlice.injectEndpoints({
         url: `${CATEGORY_URL}/${categoryId}`,
         method: "PUT",
         body: newCategory,
+        credentials: "include",
       }),
     }),
     fetchCategory: builder.query({
-      query: ()=>({
-        url : `${CATEGORY_URL}/`
-      })
+      query: () => ({
+        url: `${CATEGORY_URL}/`,
+        credentials: "include",
+      }),
     }),
   }),
 });
